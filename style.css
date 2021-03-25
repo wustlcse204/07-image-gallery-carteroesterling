@@ -33,28 +33,20 @@ body{
     display: none;
 }
 
-
-#previous,
-#next {
+.btn {
   position: absolute;
   top: 50%;
   color: white;
-  font-size: 20px;
-  border-radius: 0 3px 3px 0;
+  font-size: 25px;
+  border-radius: 5px;
   cursor: pointer;
 }
 
-/* Position the "next button" to the right */
 #next {
   right: 0;
 }
 
 #close{
-  position: absolute;
-  color: white;
-  font-size: 20px;
-  border-radius: 0 3px 3px 0;
-  cursor: pointer;
   top: 0;
   right: 0;
 }
