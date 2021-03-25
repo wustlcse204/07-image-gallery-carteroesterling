@@ -7,26 +7,86 @@
 </head>
 
 <body>
+
+    <!--SLIDE THUMBNAILS-->
+
     <div class="container">
         <div class="col" id="colOne">
-            <img class="picture" src="images/bridge.jpeg" alt="bridge">
-            <img class="picture" src="images/city.jpeg" alt="city">
-            <img class="picture" src="images/cliffs.jpeg" alt="cliffs">
+            <img class="thumbnail" src="images/bridge.jpeg" alt="bridge">
+            <img class="thumbnail" src="images/city.jpeg" alt="city">
+            <img class="thumbnail" src="images/cliffs.jpeg" alt="cliffs">
         </div>
         <div class="col" id="colTwo">
-            <img class="picture" src="images/destiny.jpeg" alt="destiny">
-            <img class="picture" src="images/hotel.jpeg" alt="hotel">
-            <img class="picture" src="images/lake.jpeg" alt="lake">
+            <img class="thumbnail" src="images/destiny.jpeg" alt="destiny">
+            <img class="thumbnail" src="images/hotel.jpeg" alt="hotel">
+            <img class="thumbnail" src="images/lake.jpeg" alt="lake">
         </div>
         <div class="col" id="colThree">
-            <img class="picture" src="images/rampage.jpeg" alt="rampage">
-            <img class="picture" src="images/rangers.jpeg" alt="rangers">
-            <img class="picture" src="images/soccer.jpeg" alt="soccer">
+            <img class="thumbnail" src="images/rampage.jpeg" alt="rampage">
+            <img class="thumbnail" src="images/rangers.jpeg" alt="rangers">
+            <img class="thumbnail" src="images/soccer.jpeg" alt="soccer">
         </div>
         <div class="col" id="colFour">
-            <img class="picture" src="images/tiger.jpeg" alt="tiger">
-            <img class="picture" src="images/watchmen.jpeg" alt="watchmen">
-            <img class="picture" src="images/waterfall.jpeg" alt="waterfall">
+            <img class="thumbnail" src="images/tiger.jpeg" alt="tiger">
+            <img class="thumbnail" src="images/watchmen.jpeg" alt="watchmen">
+            <img class="thumbnail" src="images/waterfall.jpeg" alt="waterfall">
         </div>
     </div>
+
+    <!--EXPANDED SLIDES-->
+
+    <div class="expandedSlide">
+        <img class="pic" src="images/bridge.jpeg" alt="bridge">
+    </div>
+    <div class="expandedSlide">
+        <img class="pic" src="images/city.jpeg" alt="city">
+    </div>
+    <div class="expandedSlide">
+        <img class="pic" src="images/cliffs.jpeg" alt="cliffs">
+    </div>
+    <div class="expandedSlide">
+        <img class="pic" src="images/destiny.jpeg" alt="destiny">
+    </div>
+    <div class="expandedSlide">
+        <img class="pic" src="images/hotel.jpeg" alt="hotel">
+    </div>
+    <div class="expandedSlide">
+        <img class="pic" src="images/lake.jpeg" alt="lake">
+    </div>
+    <div class="expandedSlide">
+        <img class="pic" src="images/rampage.jpeg" alt="rampage">
+    </div>
+    <div class="expandedSlide">
+        <img class="pic" src="images/rangers.jpeg" alt="rangers">
+    </div>
+    <div class="expandedSlide">
+        <img class="pic" src="images/soccer.jpeg" alt="soccer">
+    </div>
+    <div class="expandedSlide">
+        <img class="pic" src="images/tiger.jpeg" alt="tiger">
+    </div>
+    <div class="expandedSlide">
+        <img class="pic" src="images/watchmen.jpeg" alt="watchmen">
+    </div>
+    <div class="expandedSlide">
+        <img class="pic" src="images/waterfall.jpeg" alt="waterfall">
+    </div>
+
+
+    <script>
+        var index = 0;
+        expandSlide(index);
+
+        function getCurrentSlide(x) {
+            expandSlide(index = x);
+        }
+
+        function changeSlide(x) {
+            expandSlide(index += x);
+        }
+
+        function expandSlide(x) {
+
+        }
+    </script>
 </body>

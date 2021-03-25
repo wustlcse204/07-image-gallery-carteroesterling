@@ -6,9 +6,21 @@
     padding: 5px;
 }
 
-.picture {
+.thumbnail {
     width: 100%;
     height: auto;
     margin: 5px;
     vertical-align: middle;
+    opacity: .8;
+    filter: grayscale(100%);
   }
+
+.thumbnail:hover{
+    opacity: 1;
+    filter: grayscale(0%);
+}
+
+
+.expandedSlide{
+    display: none;
+}
