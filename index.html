@@ -59,9 +59,6 @@
         document.querySelector("#next").addEventListener("click", () => {
             index++;
             modalImage.src = thumbnailArray[index-1].src;
-            if(index >= 12){
-                index = 12;
-            }
         });
 
         document.querySelector("#previous").addEventListener("click", () => {
