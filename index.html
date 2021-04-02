@@ -12,103 +12,102 @@
 
     <div class="container">
         <div class="col" id="colOne">
-            <img class="thumbnail" src="images/bridge.jpeg" alt="bridge" onclick="setCurrentSlide(0)">
-            <img class="thumbnail" src="images/city.jpeg" alt="city" onclick="setCurrentSlide(1)">
-            <img class="thumbnail" src="images/cliffs.jpeg" alt="cliffs" onclick="setCurrentSlide(2)">
+            <img class="thumbnail" src="images/bridge.jpeg" alt="bridge" onclick="setIndex(1)">
+            <img class="thumbnail" src="images/city.jpeg" alt="city" onclick="setIndex(2)">
+            <img class="thumbnail" src="images/cliffs.jpeg" alt="cliffs" onclick="setIndex(3)">
         </div>
         <div class="col" id="colTwo">
-            <img class="thumbnail" src="images/destiny.jpeg" alt="destiny" onclick="setCurrentSlide(3)">
-            <img class="thumbnail" src="images/hotel.jpeg" alt="hotel" onclick="setCurrentSlide(4)">
-            <img class="thumbnail" src="images/lake.jpeg" alt="lake" onclick="setCurrentSlide(5)">
+            <img class="thumbnail" src="images/destiny.jpeg" alt="destiny" onclick="setIndex(4)">
+            <img class="thumbnail" src="images/hotel.jpeg" alt="hotel" onclick="setIndex(5)">
+            <img class="thumbnail" src="images/lake.jpeg" alt="lake" onclick="setIndex(6)">
         </div>
         <div class="col" id="colThree">
-            <img class="thumbnail" src="images/rampage.jpeg" alt="rampage" onclick="setCurrentSlide(6)">
-            <img class="thumbnail" src="images/rangers.jpeg" alt="rangers" onclick="setCurrentSlide(7)">
-            <img class="thumbnail" src="images/soccer.jpeg" alt="soccer" onclick="setCurrentSlide(8)">
+            <img class="thumbnail" src="images/rampage.jpeg" alt="rampage" onclick="setIndex(7)">
+            <img class="thumbnail" src="images/rangers.jpeg" alt="rangers" onclick="setIndex(8)">
+            <img class="thumbnail" src="images/soccer.jpeg" alt="soccer" onclick="setIndex(9)">
         </div>
         <div class="col" id="colFour">
-            <img class="thumbnail" src="images/tiger.jpeg" alt="tiger" onclick="setCurrentSlide(9)">
-            <img class="thumbnail" src="images/watchmen.jpeg" alt="watchmen" onclick="setCurrentSlide(10)">
-            <img class="thumbnail" src="images/waterfall.jpeg" alt="waterfall" onclick="setCurrentSlide(11)">
+            <img class="thumbnail" src="images/tiger.jpeg" alt="tiger" onclick="setIndex(10)">
+            <img class="thumbnail" src="images/watchmen.jpeg" alt="watchmen" onclick="setIndex(11)">
+            <img class="thumbnail" src="images/waterfall.jpeg" alt="waterfall" onclick="setIndex(12)">
         </div>
 
 
         <!--EXPANDED SLIDES-->
 
-        <div class="expandedSlide">
-            <img class="pic" src="images/bridge.jpeg" alt="bridge">
-        </div>
-        <div class="expandedSlide">
-            <img class="pic" src="images/city.jpeg" alt="city">
-        </div>
-        <div class="expandedSlide">
-            <img class="pic" src="images/cliffs.jpeg" alt="cliffs">
-        </div>
-        <div class="expandedSlide">
-            <img class="pic" src="images/destiny.jpeg" alt="destiny">
-        </div>
-        <div class="expandedSlide">
-            <img class="pic" src="images/hotel.jpeg" alt="hotel">
-        </div>
-        <div class="expandedSlide">
-            <img class="pic" src="images/lake.jpeg" alt="lake">
-        </div>
-        <div class="expandedSlide">
-            <img class="pic" src="images/rampage.jpeg" alt="rampage">
-        </div>
-        <div class="expandedSlide">
-            <img class="pic" src="images/rangers.jpeg" alt="rangers">
-        </div>
-        <div class="expandedSlide">
-            <img class="pic" src="images/soccer.jpeg" alt="soccer">
-        </div>
-        <div class="expandedSlide">
-            <img class="pic" src="images/tiger.jpeg" alt="tiger">
-        </div>
-        <div class="expandedSlide">
-            <img class="pic" src="images/watchmen.jpeg" alt="watchmen">
-        </div>
-        <div class="expandedSlide">
-            <img class="pic" src="images/waterfall.jpeg" alt="waterfall">
+        <div class="modal">
+            <span class="close" onclick="">×</span>
+            <a class="btn" id="next"><strong>&gt</strong></a>
+            <a class="btn" id="previous"><strong>&lt</strong></a>
+            <img class="modalImage" />
         </div>
 
-        <!--BUTTONS-->
-        <a class = "btn" id="next" onclick="changeSlide(1)"><strong>NEXT</strong></a>
-        <a class = "btn" id="previous" onclick="changeSlide(-1)"><strong>PREV</strong></a>
-        <a class = "btn" id="close" onclick="setCurrentSlide(-1)"><strong>CLOSE</strong></a>
     </div>
 
     <!--JAVASCRIPT-->
     <script>
-        var index = -1;
-        expandSlide(index);
-
-        //Changes Expanded Slide to given input
-        function setCurrentSlide(x) {
-            expandSlide(index = x);
+        var index = 0;
+        var modal = document.querySelector(".modal");
+        var modalImage = document.querySelector(".modalImage");
+        var temp = document.querySelectorAll(".thumbnail");
+        var thumbnailArray = Array.from(temp);
+        thumbnailArray.forEach(item => { item.addEventListener("click", event => { modal.style.display = "block"; modalImage.src = thumbnailArray[index-1].src; }); });
+        //line 53 I learned how to do from this tutorial on modal images: https://www.tutorialspoint.com/how-to-create-a-modal-image-gallery-with-css-and-javascript
+        function setIndex(n) {
+            index = n;
         }
+        document.querySelector("#next").addEventListener("click", () => {
+            index++;
+            modalImage.src = thumbnailArray[index-1].src;
+            if(index >= 12){
+                index = 12;
+            }
+        });
 
-        //Changes Expanded Slide by given input
-        function changeSlide(x) {
-            expandSlide(index += x);
-        }
+        document.querySelector("#previous").addEventListener("click", () => {
+            index--;
+            modalImage.src = thumbnailArray[index-1].src;
+            
+        });
 
-        function expandSlide(x) {
-            var slides = document.getElementsByClassName("expandedSlide");
-            //Go back to beginning if you hit next on last image
-            if (x >= slides.length) { 
-                index = 0
-            }
-            //Go to last image if you hit prev on first image  
-            if (x < 0) { 
-                index = slides.length 
-            }
-            //Make sure no other slides are displayed
-            for (var i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";
-            }
-            //Displays current slide
-            slides[index].style.display = "flex";
-        }
+        document.querySelector(".close").addEventListener("click", () => {
+            modal.style.display = "none";
+        });
+        
+
+        //INITIAL APPROACH DURING LAB 7
+
+        // var index = -1;
+        // expandSlide(index);
+
+        // //Changes Expanded Slide to given input
+        // function setCurrentSlide(x) {
+        //     expandSlide(index = x);
+        // }
+
+        // //Changes Expanded Slide by given input
+        // function changeSlide(x) {
+        //     expandSlide(index += x);
+        // }
+
+        // function expandSlide(x) {
+        //     var slides = document.getElementsByClassName("expandedSlide");
+        //     var btns = document.getElementsByClassName("btn");
+        //     var thumbnails = document.getElementsByClassName("thumbnail");
+        //     //Go back to beginning if you hit next on last image
+        //     if (x >= slides.length) { 
+        //         index = 0
+        //     }
+        //     //Go to last image if you hit prev on first image  
+        //     if (x < 0) { 
+        //         index = slides.length 
+        //     }
+        //     //Make sure no other slides are displayed
+        //     for (var i = 0; i < slides.length; i++) {
+        //         slides[i].style.display = "none";
+        //     }
+        //     //Displays current slide
+        //     slides[index].style.display = "flex";
+        // }
     </script>
 </body>
